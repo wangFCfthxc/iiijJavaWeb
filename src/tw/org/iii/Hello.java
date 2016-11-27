@@ -22,25 +22,37 @@ public class Hello extends HttpServlet {
     }
 
 
-	@Override
-	public void init() throws ServletException {
-		System.out.println("init()");
-//		super.init();
-	}
+//	@Override
+//	public void init() throws ServletException {
+//		System.out.println("init()");
+////		super.init();
+//	}
 	@Override
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 		System.out.println("service");
 //		super.service(request, response);
+		
+		try{
+			HttpServletRequest req = (HttpServletRequest)request;
+			String method = req.getMethod();
+			System.out.println(method);
+
+			
+			Enumeration<String> ps = req.getParameterNames();
+			while(ps.hasMoreElements()){
+				String item = ps.nextElement();
+				String value = req.getParameter(item);
+				System.out.println(item + " => " + value);
+			}			
+		}catch(ClassCastException ce){
+			System.out.println(ce.toString());
+		}
+		
 //		String key1 = request.getParameter("key1");
 //		System.out.println("key1=" + key1);
 //		String key2 = request.getParameter("key2");
 //		System.out.println("key2=" + key2);
-		Enumeration<String> ps = request.getParameterNames();
-		while(ps.hasMoreElements()){
-			String item = ps.nextElement();
-			String value = request.getParameter(item);
-			System.out.println(item + " => " + value);
-		}
+
 
 	}
 
