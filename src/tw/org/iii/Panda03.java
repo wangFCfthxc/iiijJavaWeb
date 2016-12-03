@@ -19,7 +19,7 @@ public class Panda03 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		int x, y, result, op, result2;
+		int x, y, result = 0, op, result2 = 0;
 		try{
 			x = Integer.parseInt(request.getParameter("x"));
 			op = Integer.parseInt(request.getParameter("op"));
@@ -36,24 +36,30 @@ public class Panda03 extends HttpServlet {
 		case 4: result = x / y; break;
 		}
 		
-//		switch(op){
-//		default:
-//		case 4: result2 = x % y; break;
-//		}
+		switch(op){
+		case 4: result2 = x % y; break;
+		}
+		
+
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<form>");
 		out.println("<input type='text' name='x' value='" + x + "' />");
 		out.println("<select name='op'>");
-		out.println("<option value='1'>+</option>");
-		out.println("<option value='2'>-</option>");
-		out.println("<option value='3'>x</option>");
-		out.println("<option value='4'>/</option>");
+		out.println("<option value='1' "+ (op==1?"selected":"") +">+</option>");
+		out.println("<option value='2' "+ (op==2?"selected":"") +">-</option>");
+		out.println("<option value='3' "+ (op==3?"selected":"") +">x</option>");
+		out.println("<option value='4' "+ (op==4?"selected":"") +">/</option>");
 		out.println("</select>");
 		out.println("<input type='text' name='y' value='" + y + "' />");
 		out.println("<input type='submit' value='=' />");
-		out.println("<span>" + result + "......" + "<span>");
+		if(result2 == 0){
+			out.println("<span>" + result + "<span>");
+			
+		}else{
+			out.println("<span>" + result + "......" + result2 + "<span>");
+		}
 		out.println("</form>");
 		out.flush();
 		out.close();
