@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -36,11 +37,23 @@ public class Panda16 extends HttpServlet {
 			prop.setProperty("password", "root");
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://127.0.0.1/iii", prop);
+			Statement stmt = conn.createStatement();
+			stmt.execute("SET NAME UTF8");
 		}catch(Exception e){
 		}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGetAndPost(request, response);	
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGetAndPost(request, response);
+	}
+	
+	private void doGetAndPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
 		response.setContentType("text/html;charset=utf-8");
 		out = response.getWriter();
 		request.setCharacterEncoding("utf-8");
@@ -50,25 +63,27 @@ public class Panda16 extends HttpServlet {
 		if (type!=null && type.equals("add")){
 			// insert into
 			String account = request.getParameter("account"); 
-			String passwd = request.getParameter("passwd"); 
+			String passwd = PandaUtils.hashPassword(request.getParameter("passwd")); 
 			String realname = request.getParameter("realname"); 
 			addData(account,passwd,realname);
 		}else if(delid!= null){
 			delData(delid);
+		}else if(type!=null && type.equals("edit")){
+			String updateid = request.getParameter("updateid"); 
+			String account = request.getParameter("account"); 
+			String passwd = request.getParameter("passwd"); 
+			String realname = request.getParameter("realname"); 
+			editData(updateid,account,passwd,realname);
 		}
 		
-		outHTML(queryData());
-		
-		
-		
+		outHTML(queryData());	
 	}
 	
 	private void addData(String account,String passwd,String realname){
 		try {
 			PreparedStatement pstmt = 
 					conn.prepareStatement(
-							"insert into member (account,passwd,realname) " +
-							"values (?,?,?)");
+							"insert into member (account,passwd,realname) values (?,?,?)");
 			pstmt.setString(1, account);
 			pstmt.setString(2, passwd);
 			pstmt.setString(3, realname);
@@ -84,6 +99,21 @@ public class Panda16 extends HttpServlet {
 					conn.prepareStatement(
 							"delete from member where id = ?");
 			pstmt.setString(1, id);
+			pstmt.execute();
+		} catch (SQLException e) {
+			System.out.println(e.toString());
+		}
+	}
+
+	private void editData(String updateid, String account,String passwd,String realname){
+		try {
+			PreparedStatement pstmt = 
+					conn.prepareStatement(
+							"update member set account=?,passwd=?,realname=? where id = ?");
+			pstmt.setString(1, account);
+			pstmt.setString(2, passwd);
+			pstmt.setString(3, realname);
+			pstmt.setString(4, updateid);
 			pstmt.execute();
 		} catch (SQLException e) {
 			System.out.println(e.toString());
@@ -122,6 +152,7 @@ public class Panda16 extends HttpServlet {
 		out.print("<th>Password</th>");
 		out.print("<th>RealName</th>");
 		out.print("<th>Delete</th>");
+		out.print("<th>Edit</th>");
 		out.print("</tr>");
 		
 		for (HashMap<String,String> row : data){
@@ -132,6 +163,7 @@ public class Panda16 extends HttpServlet {
 			out.print(String.format(
 					"<td><a href=?delid=%s onclick='return isDelete(\"%s\");'>Delete</a></td>",
 					row.get(fields[0]), row.get(fields[1])));
+			out.println(String.format("<td><a href='Panda17?editid=%s'>Edit</a></td>", row.get(fields[0])));
 			out.print("</tr>");
 		}
 		
