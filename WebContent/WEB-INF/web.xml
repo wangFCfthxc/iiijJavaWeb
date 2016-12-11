@@ -144,7 +144,7 @@
     <servlet-name>Panda24</servlet-name>
     <url-pattern>/Panda24</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>Panda25</servlet-name>
     <servlet-class>tw.org.iii.Panda25</servlet-class>
   </servlet>
@@ -152,7 +152,70 @@
     <servlet-name>Panda25</servlet-name>
     <url-pattern>/Panda25</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>Panda27</servlet-name>
+    <servlet-class>tw.org.iii.Panda27</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda27</servlet-name>
+    <url-pattern>/Panda27</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Panda29</servlet-name>
+    <servlet-class>tw.org.iii.Panda29</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda29</servlet-name>
+    <url-pattern>/Panda29</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Panda30</servlet-name>
+    <servlet-class>tw.org.iii.Panda30</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda30</servlet-name>
+    <url-pattern>/Panda30</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Panda31</servlet-name>
+    <servlet-class>tw.org.iii.Panda31</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda31</servlet-name>
+    <url-pattern>/Panda31</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>Panda32</servlet-name>
+    <servlet-class>tw.org.iii.Panda32</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda32</servlet-name>
+    <url-pattern>/Panda32</url-pattern>
+  </servlet-mapping> 
+   <servlet>
+    <servlet-name>Panda33</servlet-name>
+    <servlet-class>tw.org.iii.Panda33</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda33</servlet-name>
+    <url-pattern>/Panda33</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>Panda34</servlet-name>
+    <servlet-class>tw.org.iii.Panda34</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda34</servlet-name>
+    <url-pattern>/Panda34</url-pattern>
+  </servlet-mapping> 
+    <servlet>
+    <servlet-name>Panda35</servlet-name>
+    <servlet-class>tw.org.iii.Panda35</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda35</servlet-name>
+    <url-pattern>/Panda35</url-pattern>
+  </servlet-mapping>
   <context-param>
     <description>Imgs</description>
     <param-name>imgs-path</param-name>
