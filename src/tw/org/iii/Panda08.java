@@ -11,29 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@MultipartConfig(location="D:/eclipse/jee-neon/workspace/JavaWeb/WebContent/upload2")
+@MultipartConfig(location = "D:/eclipse/jee-neon/workspace/JavaWeb/WebContent/upload2")
 @WebServlet("/Panda08")
 public class Panda08 extends HttpServlet {
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-Part part = request.getPart("upload");
-		
-		String header = part.getHeader("Content-Disposition"); //Content-Disposition
+		Part part = request.getPart("upload");
+
+		String header = part.getHeader("Content-Disposition"); // Content-Disposition
 		String myfilename = getFilename(header);
-		
+
 		part.write(myfilename);
 	}
-	
-	private String getFilename(String body){
+
+	private String getFilename(String body) {
 		int start = body.indexOf("filename=\"");
-		String temp = body.substring(start+10);
+		String temp = body.substring(start + 10);
 		String filename = temp.substring(0, temp.indexOf("\""));
 		int s = filename.lastIndexOf("\\");
-		filename = filename.substring(s+1);
-		
+		filename = filename.substring(s + 1);
+
 		return filename;
 	}
 }

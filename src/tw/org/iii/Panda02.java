@@ -29,7 +29,7 @@ public class Panda02 extends HttpServlet {
 		}
 		result = x + y;
 		
-		response.setContentType("text/html; charset=UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<form>");
 		out.println("<input type='text' name='x' value='" + x + "' /> + ");
