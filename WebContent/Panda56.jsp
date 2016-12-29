@@ -7,6 +7,11 @@
 <title>Panda Big Company</title>
 </head>
 <body>
-
+<%
+	Integer intX = (Integer)application.getAttribute("x");
+	intX++;
+	out.print(intX);
+	application.setAttribute("x", intX);
+%>
 </body>
 </html>

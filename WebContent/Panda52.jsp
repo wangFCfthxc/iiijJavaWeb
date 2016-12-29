@@ -10,7 +10,7 @@
 	<table border='1' width='100%'>
 		<tr>
 			<%
-				for (int k = 0; k < 5; k++) {
+				for (int k = 0; k < 2; k++) {
 					out.print("<tr>");
 					for (int j = 2; j <= 5; j++) {
 						int newj = j + k * 4;

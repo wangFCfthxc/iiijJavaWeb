@@ -8,6 +8,7 @@
 </head>
 <body>
 <%
+application.setAttribute("x", 123);
 request.setAttribute("x", (int)(Math.random()*49+1));
 
 
@@ -16,6 +17,6 @@ Integer intx = (Integer)request.getAttribute("x");
 out.print(x + "<br>");
 out.print(intx + "<br>");
 %>
-<a href="Panda56">Goto Panda56</a>
+<a href="Panda56.jsp">Goto Panda56</a>
 </body>
 </html>

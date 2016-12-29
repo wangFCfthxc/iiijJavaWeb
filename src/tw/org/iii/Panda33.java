@@ -32,7 +32,7 @@ public class Panda33 extends HttpServlet {
 		
 		out.println("Panda33<hr>");
 		out.print(name + ":" + Lottery);
-		out.println("<a href='Panda34'>Panda34</a>");
+		out.println("<a href='Panda34'>Panda34</a><br>");
 		out.println("<a href='Panda35'>Logout</a>");
 		
 		myCart.addItem("apple", 10);

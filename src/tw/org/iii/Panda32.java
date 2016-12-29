@@ -28,6 +28,7 @@ public class Panda32 extends HttpServlet {
 		out.print("Lottery:" + Lottery);
 		
 		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(10);
 		session.setAttribute("name", "panda");
 		session.setAttribute("lottery", Lottery);// Lottery(int)=>autoboxing=>Integer
 		myCart = new MyCart("brad");

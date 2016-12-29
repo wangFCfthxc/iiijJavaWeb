@@ -161,6 +161,14 @@
     <url-pattern>/Panda25</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Panda26</servlet-name>
+    <servlet-class>tw.org.iii.Panda26</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Panda26</servlet-name>
+    <url-pattern>/Panda26</url-pattern>
+  </servlet-mapping> 
+  <servlet>
     <servlet-name>Panda27</servlet-name>
     <servlet-class>tw.org.iii.Panda27</servlet-class>
   </servlet>
