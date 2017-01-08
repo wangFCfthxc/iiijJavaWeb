@@ -38,4 +38,10 @@ public class Member implements Serializable{
 	private String m1(){
 		return "OK";
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 }

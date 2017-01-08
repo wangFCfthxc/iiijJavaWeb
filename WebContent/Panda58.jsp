@@ -1,4 +1,4 @@
-I am PAnda58
+I am Panda58
 <%
 String x = request.getParameter("x");
 String y = request.getParameter("y");
