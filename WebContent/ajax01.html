@@ -1,0 +1,50 @@
+<script>
+	var xhttp;
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else {
+		// IE5 IE6
+		xhttp = new ActiveXObject(Microsoft.XMLHTTP);
+	}
+
+	function test1() {
+		var newid = document.getElementById('id').value;
+		xhttp.open('GET', 'Panda95.jsp?id=' + newid, true); // true => async; false:sync
+		// callback
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var here = document.getElementById('here');
+				here.innerHTML = this.responseText;
+				
+			}
+		}
+		xhttp.send();
+	}
+	
+	var var1;
+	function test2() {
+		var1 = setInterval(test1 , 1000);
+	}
+	
+	function test3() {
+		clearInterval(var1);
+	}
+</script>
+<h1>Panda Big Company</h1>
+<hr>
+<select id="id">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+</select>
+<input type="button" value="START" onclick="test2()" />
+<input type="button" value="STOP" onclick="test3()" />
+<div id="here"></div>
+<hr>
+Hello, World
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>Hello, World

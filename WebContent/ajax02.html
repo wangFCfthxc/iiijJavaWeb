@@ -1,0 +1,32 @@
+<script>
+	var xhttp;
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else {
+		// IE5 IE6
+		xhttp = new ActiveXObject(Microsoft.XMLHTTP);
+	}
+
+	function test1() {
+		xhttp.open('POST','Panda95.jsp',true);
+		xhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		// callback
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var here = document.getElementById('here');
+				here.innerHTML = this.responseText;
+				
+			}
+		}
+		xhttp.send('id=1');
+	}
+	
+
+</script>
+<h1>Panda Big Company</h1>
+<hr>
+<input type="button" value="START" onclick="test1()" />
+
+<div id="here"></div>
+<hr>
+Hello, World

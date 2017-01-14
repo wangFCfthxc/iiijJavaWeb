@@ -1,0 +1,72 @@
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+	
+</script>
+
+<script>
+	$(document).ready(
+			function() {
+				$("#mybtn").click(
+						function() {
+							$("#here").load("Panda96.jsp",
+									function(responseText, status, xhttp) {
+										if (status == 'success') {
+											alert('OK');
+											$('#span').html(responseText);
+											$('#span2').html(status);
+										} else {
+											alert(status);
+										}
+									});
+						});
+
+				$('#mybtn2').click(
+						function() {
+							$.get('Panda96.jsp?name=brad&year=2016', function(
+									responseText, status) {
+								alert(status);
+								$('#here2').html(responseText);
+							});
+						});
+
+				$('#mypost').click(function() {
+					$.post('Panda96.jsp', {
+						name : "Brad",
+						year : 2017
+					}, function(responseText, status) {
+						alert(status);
+						$('#here3').html(responseText);
+					});
+				});
+
+				$('#myajax').click(function() {
+					$.ajax({
+						url : "Panda96.jsp?name=brad&year=2016",
+						success : function(result) {
+							$('#here4').html(result);
+						}
+					});
+				});
+
+			});
+</script>
+<h1>Brad Big Company</h1>
+<hr />
+<input type='button' value='Start' id='mybtn' />
+<hr />
+Hello, World
+<div id='here'></div>
+responseText =
+<span id='span'></span>
+<br>
+status =
+<span id='span2'></span>
+<hr>
+<input type='button' value='get' id='mybtn2' />
+<div id='here2'></div>
+<hr />
+<input type='button' value='post' id='mypost' />
+<div id='here3'></div>
+<hr />
+<input type='button' value='ajax' id='myajax' />
+<div id='here4'></div>
