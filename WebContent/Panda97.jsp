@@ -13,6 +13,8 @@
 <body>
 
 ${myfn:sayHello("Panda") }
+<hr>
+${myfn:sayHello2('Panda','Brad') }
 
 <hr>
 <c:set var="account" value="panda" />

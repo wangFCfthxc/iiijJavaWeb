@@ -70,7 +70,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=815543765252009";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -89,8 +89,8 @@
         '(' + response.email + ')';
       
       
-      window.location = "Panda94.jsp?email=" + response.email + "&gender=" + response.gender +
-    		  "&id=" + response.id +  "&locale=" + response.locale + "&timezone=" + response.timezone;
+      window.location = "ktvMember.jsp?email=" + response.email + "&gender=" + response.gender +
+	  "&id=" + response.id +"&name=" + response.name;
     });
   }
 </script>
@@ -101,7 +101,7 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<fb:login-button scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();">
 </fb:login-button>
 
 <div id="status">
